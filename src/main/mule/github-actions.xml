@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="github-actionsFlow" doc:id="89be5300-ddad-49ca-b48f-af91bf608750" >
+		<http:listener doc:name="Listener" doc:id="8958e0e6-a502-450b-9b92-0e8d341eaba6" config-ref="HTTP_Listener_config" path="/actions" allowedMethods="GET">
+			<http:response statusCode="#[vars.httpStatus default 200]" />
+			<http:error-response statusCode="#[vars.httpStatus default 500]" />
+		</http:listener>
+		<set-variable value='#[now() as String {format: "y-MM-dd - hh:m:s"}]' doc:name="Set Variable" doc:id="27aade54-36aa-4a4c-83ad-be5ca4bbef78" variableName="requestArrivalTime"/>
+		<logger level="INFO" doc:name="Logger" doc:id="0a8fb480-2bf0-4bb7-8975-1969fe82eb32" message='#["Request Received - " ++ vars.requestArrivalTime]'/>
+		<ee:transform doc:name="Transform Message" doc:id="9f482287-f7e6-4862-aa80-bfc12288ab4b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"correlationId": correlationId,
+	"status": "Success",
+	"message": "Response from github-actions app",
+	"timeStamp": now() as String {format: "y-MM-dd - hh:m:s"}
+	 
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<set-variable value="200" doc:name="Set Variable" doc:id="f1f4a096-a863-4e03-8a74-91f20ee483ea" variableName="httpStatus" />
+		<logger level="INFO" doc:name="Logger" doc:id="632f2e2a-8843-4786-93f9-2b0eaee7ae86" message='#["Response Sent - " ++ now() as String {format: "y-MM-dd - hh:m:s"}]'/>
+	</flow>
+</mule>
