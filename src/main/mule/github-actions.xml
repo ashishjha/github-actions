@@ -27,6 +27,6 @@ output application/json
 			</ee:message>
 		</ee:transform>
 		<set-variable value="200" doc:name="Set Variable" doc:id="f1f4a096-a863-4e03-8a74-91f20ee483ea" variableName="httpStatus" />
-		<logger level="INFO" doc:name="Logger" doc:id="632f2e2a-8843-4786-93f9-2b0eaee7ae86" message='#["Response Sent - " ++ now() as String {format: "y-MM-dd - hh:m:s"}]'/>
+		<logger level="INFO" doc:name="Logger" doc:id="632f2e2a-8843-4786-93f9-2b0eaee7ae86" message='#["Response Sent at - " ++ now() as String {format: "y-MM-dd - hh:m:s"}]'/>
 	</flow>
 </mule>
