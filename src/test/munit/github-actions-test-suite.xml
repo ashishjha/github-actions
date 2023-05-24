@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="github-actions-test-suite.xml" />
+	<munit:test name="github-actions-test-suite-github-actionsFlowTest" doc:id="f8cd4116-9e9c-44d9-8540-b7da9163ffbd" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to github-actionsFlow" doc:id="ea0e964e-cb5e-4ef2-8804-4287aae904af" name="github-actionsFlow"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>
