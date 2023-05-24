@@ -77,5 +77,4 @@ jobs:
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
          -Dclient.id="$CLIENT_ID" \
-         -Dclient.secret="$CLIENT_SECRET" \
-         ##-DskipTests
+         -Dclient.secret="$CLIENT_SECRET"
