@@ -112,5 +112,6 @@ jobs:
         artifactName=$(ls *.jar | head -1)
         mvn deploy -DmuleDeploy \
          -Dmule.artifact=$artifactName \
+         -s .maven/settings.xml \
          -Dclient.id="$CLIENT_ID" \
          -Dclient.secret="$CLIENT_SECRET"
