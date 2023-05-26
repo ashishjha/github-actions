@@ -6,4 +6,47 @@
             <password>339dc1a2a307467492a680d9e1be5b2a~?~7197e78ea7654e09859e1cCFF5c32950</password>
         </server>
     </servers>
+	<pluginGroups>
+    <pluginGroup>org.mule.tools</pluginGroup>
+  </pluginGroups>
+  <profiles>
+    <profile>
+      <id>mule-extra-repos</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>mule-public</id>
+          <url>https://repository.mulesoft.org/nexus/content/repositories/public</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>mule-public</id>
+          <url>https://repository.mulesoft.org/nexus/content/repositories/public</url>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+      <id>Mule</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>MuleRepository</id>
+          <name>MuleRepository</name>
+          <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
 </settings>
